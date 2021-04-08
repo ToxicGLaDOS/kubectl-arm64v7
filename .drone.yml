@@ -1,0 +1,17 @@
+---
+kind: pipeline
+type: kubernetes
+name: build_image
+
+platform:
+  os: linux
+  arch: arm64
+
+- name: publish
+  image: plugins/docker
+  settings:
+    repo: toxicglados/kubectl
+    tags: latest
+    username: toxicglados
+    password:
+      from_secret: docker_password
